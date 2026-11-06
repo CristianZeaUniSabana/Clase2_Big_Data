@@ -1,0 +1,13 @@
+Integrantes: Cristian Zea
+
+1) Porque fue nesesario el MAX()?
+R: Se nesecita debido a que cuando usas el CASE WHEN, este te devuelve devuelve el valor solo en las filas del indicador correspondiente, y NULL en las demas,
+por otro lado GROUP BY sexo agrupa las filas, así que para cada columna hay que decidir qué valor sale de cada grupo. Para eso hace falta una función de agregación; finalmente 
+en el caso de MAX() ignora los NULL, así que se queda con el valor real de cada indicador.
+
+2) advantage of DuckDB querying a Parquet file directly compared to loading the entire file into Pandas first.
+R: DuckDB lee el archivo directamente del disco y solo trae lo que la consulta necesita.
+ Parquet es columnar, que quuiere decir esto? que si le pides dos columnas, te va a leer solo dos columnas, por otro lado
+ Pandas te va a cargar todo el archivo en la RAM en primer lugar antes de hacer nada y va a continuar usando ese mismo espacio
+ independientemente si usas todo el archivo o solo una parte de el, que quiere decir esto? que Parquet es mejor cuando se trata
+ de archivos grandes ya que solo te va a leer lo que le pides mas rapidamente y sin usar tantos recursos deiferente a Pandas
